@@ -1,0 +1,28 @@
+<!Doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE-edge">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script>
+$(function(){
+	var agent=navigator.userAgent.toLowerCase();
+	
+	console.log(agent);
+
+	if(agent.indexOf("iphone")!=-1||agent.indexOf("android")!=-1||agent.indexOf("ipad")!=-1){
+		location.href="mobile/index.html";
+	}
+	else {
+		location.href="pc/index.html";
+	}
+});
+</script>
+</head>
+
+<body>
+</body>
+</html>
