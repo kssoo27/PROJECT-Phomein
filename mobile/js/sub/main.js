@@ -1,21 +1,34 @@
 // sub 01 ----------------------------------------------------------------
 
 $(function(){
-	//스크롤 이벤트 -----------------------------------------------------
 	var winH=$(window).height();
 	var winW=$(window).width();
 	
+/* keyvisual */
+// 화면 비율 조정
+	$(window).resize(function(){
+		if(winH>winW){
+			$("#title").height(winH*(0.7));
+			$("#title").removeClass("row");
+			$("#title").addClass("column");
+		}
+		else{
+			$("#title").height(winH-60);
+			$("#title").removeClass("column");
+			$("#title").addClass("row");
+		}		
+	}).trigger("resize");	
+	
+// 스크롤 이벤트 
 	$(window).scroll(function(){
 		scT=$(window).scrollTop();
 		if(scT>=$(".brand").offset().top-winH){
 			$("#title").addClass("on");
 		}
-	});
-	
-	$(window).trigger("scroll");
+	}).trigger("scroll");
 
-// Mobile --------------------------------------------------------------
-	// 메뉴 텝 클릭시 ----------------------------------
+/* Mobile */
+// 메뉴 텝 클릭시 ----------------------------------
 	$(".tab").click(function(e){
 		e.preventDefault();
 		$(".mobile").addClass("active");
@@ -23,7 +36,7 @@ $(function(){
 		$("body").addClass("fixed");
 	});
 	
-	// a 대신 li 로 교체 해야할 수도 있음.
+// a 대신 li 로 교체 해야할 수도 있음.
 	$(".mobile > ul > li > a").click(function(e){
 		e.preventDefault();
 		if($(this).next("span").hasClass("active")){
@@ -38,7 +51,7 @@ $(function(){
 		}
 	});
 	
-	// 닫기버튼
+// 닫기버튼
 	$(".close").click(function(e){
 		e.preventDefault();
 		$(".mobile").removeClass("active");
@@ -46,7 +59,7 @@ $(function(){
 		$(".depth").slideUp();
 		$("body").removeClass("fixed");
 	});
-	// 메뉴 밖 검은 화면
+// 메뉴 밖 검은 화면
 	$(".dim").click(function(){
 		$(".mobile").removeClass("active");
 		$(this).removeClass("active");
@@ -55,13 +68,13 @@ $(function(){
 		$("body").removeClass("fixed");
 	});
 	
-	// 검색기능
+// 검색기능
 	$(".search a").click(function(e){
 		e.preventDefault();
 		if($(this).next().is(":visible")){
 			$(".search_box").hide();
 			$(this).children().attr({src:"images/search_icon.png"});
-			// 이미 header가 active 가 활성화된경우
+		// 이미 header가 active 가 활성화된경우
 			if(scT==0){
 				$("#header").removeClass("active");
 				$("#logo a img").attr({src:"images/logo1.png"});
@@ -77,26 +90,9 @@ $(function(){
 			$("#header").addClass("active");
 		}
 	});
-
-// keyvisual ----------------------------------------------------------
-// 화면 비율 조정
-	$(window).resize(function(){
-		if(winH>winW){
-			$("#title").height(winH*(0.7));
-			$("#title").removeClass("row");
-			$("#title").addClass("column");
-		}
-		else{
-			$("#title").height(winH-60);
-			$("#title").removeClass("column");
-			$("#title").addClass("row");
-		}		
-	});
 	
-	$(window).trigger("resize");
-	
-// footer 
-	// family site
+/* footer */
+// family site
 	$(".family_site > a").click(function(e){
 		e.preventDefault();
 		if($(this).hasClass("active")){

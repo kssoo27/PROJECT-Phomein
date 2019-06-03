@@ -22,9 +22,7 @@ $(function(){
 		menuN=$(this).index();
 		$(".depth_first > li").mouseenter(function(){
 			depthN=$(this).index();
-			console.log(depthN);
 		});
-		console.log(menuN);
 		if (menuN == depthN) return false;
 		$(".depth_second li").removeClass("active");
 		$(".depth_second li:first-child").addClass("active");
@@ -91,7 +89,6 @@ $(function(){
 		var n=0;
 		var pos;
 		n=$(this).index();
-		console.log(n);
 		pos = n*(-1)*100;
 		$(".banner ul").css({"left":pos+"%"});
 	});

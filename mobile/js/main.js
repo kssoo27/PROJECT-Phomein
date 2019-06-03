@@ -2,13 +2,15 @@ $(function(){
 // keyvisual ----------------------------------------------------------
 // 화면 비율 조정
 
-	var winH=$(window).height();
-	var winW=$(window).width();
+	var windowHeight;
+	var windowWidth;
 
 	$(window).resize(function(){
-		if(winH>winW){
-			$("#keyvisual").height(winH);
-			$("#mainv").height(winH);
+		windowHeight=$(window).height();
+		windowWidth=$(window).width();
+		if(windowHeight>windowWidth){
+			$("#keyvisual").height(windowHeight);
+			$("#mainv").height(windowHeight);
 		}
 		else{
 			$("#mainv").width("100%");
@@ -16,12 +18,7 @@ $(function(){
 			$("#keyvisual .title dd").hide();
 		}
 
-
-// brand 이미지 조절
-		$(".b_image").width($(window).width());
-		
-		
-		// 포메인 메뉴 기본설정  + footer sns 이미지
+	// 포메인 메뉴 기본설정  + footer sns 이미지
 		var sns;
 		
 		if($(window).width()<550){
@@ -52,13 +49,11 @@ $(function(){
 
 		mainW=$("img.main").width();
 		videoW=$("#mainv").width();
-	//	console.log("video:"+videoW);
-	//	console.log("window:"+winW);
 		
 		$("#mainv").css({"margin-left":-videoW/2});
 		
-		if(mainW<winW){
-			mainW=winW;
+		if(mainW<windowWidth){
+			mainW=windowWidth;
 		}
 		else{
 			mainW=960;
@@ -91,9 +86,9 @@ $(function(){
 		$(".conts > li").each(function(){
 			// 각각의 컨텐츠 상단좌표
 			contT=$(this).offset().top;
-		//	console.log(contT-winH);
+		//	console.log(contT-windowHeight);
 		//	console.log(scT);
-			if(scT>contT-winH+100){
+			if(scT>contT-windowHeight+100){
 				$(this).find("img").addClass("on");
 			}
 		});
@@ -102,13 +97,13 @@ $(function(){
 		$(".contents .title").each(function(){
 			contT=$(this).offset().top;
 			
-			if(scT>contT-winH+50){
+			if(scT>contT-windowHeight+50){
 				$(this).addClass("on");
 			}
 		});
 		
 		// delivery 이미지 스크롤
-		if(scT>$("#delivery").offset().top-winH+50){
+		if(scT>$("#delivery").offset().top-windowHeight+50){
 			$("#delivery").children("img").addClass("on");
 		}
 		
