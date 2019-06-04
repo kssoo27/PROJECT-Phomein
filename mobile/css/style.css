@@ -1,0 +1,672 @@
+@charset "utf-8";
+body.fixed {
+	overflow : hidden;
+}
+.wrap {
+	padding-top: 60px;
+}
+@media only screen and (max-width:760px){
+	body {
+		font-size: 0.5em;
+	}
+	.wrap {
+		padding-top: 40px;
+	}
+}
+/* header */
+#header {
+	display : flex;
+	justify-content : center;
+	align-items : center;
+	position : fixed;
+	top : 0;
+	width : 100%;
+	height : 60px;
+	border-bottom : 1px solid #ccc;
+	box-sizing: border-box;
+	z-index : 2;
+	background-color : #fff;
+}
+#header .logo {
+	z-index : 1;
+}
+#logo {
+	font-size : 1em;
+}
+#logo a {
+	display: inline-block;
+	width: 130px;
+}
+#logo a img {
+	max-width: 100%;
+}
+#header .util {
+	display : flex;
+	justify-content : space-between;
+	align-items : center;
+	padding : 0 5%;
+	position : absolute;
+	top : 0;
+	height : 100%;
+	width : 100%;
+	box-sizing: border-box;
+}
+#header .util img {
+	max-width: 100%;
+}
+#header .util .tab, #header .search > a {
+	display: inline-block;
+}
+#header .search .search_box {
+	display : none;
+	position : absolute;
+	top : 100%;
+	right : 0;
+	width : 100%;
+	height : 60px;
+	padding-top: 20px; 
+	background-color : #fff;
+	text-align : center;
+	z-index : 1;
+}
+#header .search .search_box input[type=text]{
+	width : 70%;
+	height : 30px;
+	border : 1px solid #ccc;
+	box-sizing : border-box;
+	vertical-align : middle;
+	padding-left : 20px;
+}
+#header .search .search_box button {
+	width :	30px;
+	height : 30px;
+	vertical-align : middle;
+	border : 1px solid #ccc;
+	background : url('../images/search_icon.png') no-repeat center center;
+	background-color : #fff;
+}
+#header .search .search_box span {
+	font-size : 0.75em;
+	color : #666;
+	line-height : 20px;
+}
+#header .search .search_box span a {
+	color: #555;
+}
+@media only screen and (max-width:760px){
+	#header {
+		height: 40px;
+	}
+	#logo a {
+		width: 100px;
+	}
+	#header .util .tab, #header .search > a {
+		width: 15px;
+	}
+}
+/* 모바일 mobile 창 */
+.mobile {
+	position : fixed;
+	max-width : 600px;
+	width : 100%;
+	height : 100%;
+	top :0;
+	left : 0;
+	background-color : #373737;
+	margin-left : -100%;
+	transition : margin-left 0.3s;
+	z-index : 999;
+	overflow : auto;
+}
+.mobile.active {
+	margin : 0;
+}
+.mobile_head {
+	display : flex;
+	justify-content : space-between;
+	align-items : center;
+	position : relative;
+	padding : 20px;
+	background-color : #fff;
+	border-bottom : 1px solid #eaeaea;
+}
+.mobile .login {
+	text-align : right;
+	padding: 10px 0;
+	background-color : #fff;
+}
+.mobile .login ul {
+	margin-right: 20px;
+}
+.mobile .login ul li {
+	display : inline-block;
+}
+.mobile .login ul li a {
+	display: block;
+	line-height : 32px;
+	padding : 0 10px;
+	font-size : 0.9em;
+	color: #555;
+	border-radius: 10px;
+	border: 1px solid #eaeaea;
+}
+.mobile .login ul li:first-child a {
+	background-color : #355840;
+	color: #fff;
+}
+.mobile > ul {
+	border-bottom : 1px solid #eaeaea;
+}
+
+.mobile > ul > li {
+	font-weight : 500;
+	position : relative;
+}
+
+.mobile > ul > li::after {
+	content : '';
+	display : block;
+	position : absolute;
+	left : 2%;
+	top : 0;
+	width : 96%;
+	height : 1px;
+	background-color : #666;
+}
+
+.mobile > ul > li:first-child::after {
+	display : none;
+}
+
+.mobile > ul > li > a {
+	position: relative;
+	display : block;
+	line-height : 3.75em;
+	font-size : 1em;
+	color : #fff;
+	padding-left : 20px;
+}
+.mobile > ul > li > a::after {
+	content: '';
+	display: block;
+	width : 25px;
+	height : 25px;
+	position: absolute;
+	right: 25px;
+	top: 50%;
+	margin-top: -12.5px;
+	background: url("../images/menu_add_btn.png") no-repeat 0 0;
+}
+.mobile > ul > li > a.active::after {
+	background-position: 0 -25px;
+}
+.mobile .depth {
+	display : none;
+	padding : 10px;
+	background-color : #fff;
+}
+.mobile .depth li {
+	padding-left : 30px;
+}
+.mobile .depth li a {
+	font-size : 0.9em;
+	line-height : 2.2em;
+	color : #333;
+}
+.dim {
+	display : none;
+	position : fixed;
+	left : 0;
+	top : 0;
+	right : 0;
+	bottom : 0;
+	z-index : 10;
+	background-color : rgba(0,0,0,0.6);
+	overflow : hidden;
+}
+.dim.active {
+	display : block;
+}
+#keyvisual {
+	position : relative;
+	width : 100%;
+}
+#keyvisual .mainBanner {
+	width: 100%;
+	overflow: hidden;
+}
+#keyvisual ul {
+	width: 200%;
+}
+#keyvisual ul li {
+	align-items : center;
+	overflow : hidden;
+	float : left;
+	width: 50%;
+}
+#keyvisual ul li img {
+	max-width: 100%;
+}
+#keyvisual .controller {
+	position: absolute;
+	width: 100%;
+	bottom: 20px;
+	text-align: center;
+}
+#keyvisual .controller a {
+	display : inline-block;
+	width : 12px;
+	height : 12px;
+	text-indent: -9999px;
+	border-radius: 50%;
+	background-color: #eaeaea;
+	margin-left: 5px;
+}
+#keyvisual .controller a:first-child {
+	margin-left: 0;
+}
+.contents {
+	padding : 1em;
+	text-align : center;
+}
+.contents .title {
+	margin-bottom : 1em;
+}
+.contents .title dl dt {
+	font-size : 2.2em;
+	font-weight : 700;
+	margin-bottom : 10px;
+	color: #333;
+}
+.contents .title dl dd {
+	font-size : 1em;
+	font-weight : 500;
+	color: #555;
+}
+/* 브랜드 소개 brand story */
+#brand {
+	/* background: url("../images/brand_bg.jpg") no-repeat center bottom; */
+}
+#brand .conts {
+	display : flex;
+	flex-direction : row;
+	justify-content: space-between;
+	/* align-items : center; */
+	text-align : center;
+}
+#brand .conts li {
+	width: 30%;
+}
+#brand .conts li .b_image {
+	height : 270px;
+	overflow : hidden;
+}
+#brand .conts li .b_image img {
+	opacity : 0;
+	transform : translatex(200px);
+	transition : transform 1.5s, opacity 1s;
+}
+#brand .conts li .b_image img.on {
+	opacity : 1;
+	transform : translatex(0);
+}
+#brand .conts li dl {
+	margin-bottom: 10px;
+}
+#brand .conts li dt {
+	display : inline-block;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-size : 1.25rem;
+	font-weight : 700;
+}
+#brand .conts li dd {
+	font-size : 0.75rem;
+	font-weight : 300;
+	letter-spacing : 2px;
+}
+#brand .conts li a {
+	font-size : 0.75em;
+	font-weight : 500;
+	letter-spacing : 2px;
+}
+#brand .conts li:nth-child(1) {
+	color : #355840;
+}
+#brand .conts li:nth-child(1) a {
+	color : #355840;
+}
+#brand .conts li:nth-child(1) a span {
+	background-position : 0;
+}
+#brand .conts li:nth-child(2) {
+	color : #d04545;
+}
+#brand .conts li:nth-child(2) a {
+	color : #d04545;
+}
+#brand .conts li:nth-child(2) a span {
+	background-position : -50px 0;
+}
+#brand .conts li:nth-child(3) {
+	color : #000;
+}
+#brand .conts li:nth-child(3) a {
+	color : #000;
+}
+#brand .conts li:nth-child(3) a span {
+	background-position : -100px 0;
+}
+@media only screen and (max-width:700px){
+	#brand .conts {
+		flex-direction: column;
+	}
+	#brand .conts li {
+		width: 100%;
+		margin-top: 10px;
+	}
+	#brand .conts li:first-child {
+		margin-top: 0;
+	}
+	#brand .conts li .b_image {
+		height: 150px;
+	}
+	#brand .conts li dt {
+		font-size: 1rem;
+	}
+}
+/* 메뉴-음식 menu */
+#menu .menu_box {
+	position : relative;
+	padding : 5em 0;
+	background : url(../images/menu_bg.jpg) no-repeat;
+	overflow : hidden;
+}
+#menu .menu_box .select {
+	position : absolute;
+	width : 100%;
+	top : 12%;
+	text-align : center;
+	font-weight : 500;
+	font-size : 1em;
+}
+#menu .menu_box .menu_scroll {
+	margin : 0 auto;
+	position : relative;
+	width : 25em;
+	height : 0.25em;
+	background-color : #fff;
+	border-radius : 0.125em;
+}
+#menu .menu_box .menu_scroll.resize {
+	width : 80%;
+}
+#menu .menu_box .menu_scroll span {
+	display : none;
+	position : absolute;
+	left : 0;
+	top : 0;
+	width : 25%;
+	height : 100%;
+	text-indent : -9999px;
+	overflow : hidden;
+	background-color : #358921;
+	border-radius : 0.125em;
+	transition : 0.3s;
+}
+#menu .menu_box > ul {
+	display : flex;
+	justify-content : space-between;
+	position : relative;
+	padding : 0 10%;
+}
+#menu .menu_box > ul > li > a {
+	font-size : 1em;
+	font-weight : 400;
+	line-height : 5em;
+}
+#menu .menu_box > ul > li.active > a {
+	color : #358921;
+	font-weight : 500;
+}
+#menu .menu_box .sub_group {
+	display : none;
+	position : relative;
+	overflow : hidden;
+}
+#menu .menu_box .sub_group .arrow_btn {
+	display : flex;
+	position : absolute;
+	width : 100%;
+	top : 50%;
+	z-index : 1;
+	opacity : 0.6;
+}
+#menu .menu_box .sub_group .arrow_btn.off {
+	display : none;
+}
+#menu .menu_box .sub_group .arrow_btn a {
+	position : absolute;
+	top : 50%;
+	margin-top : -20px;
+}
+#menu .menu_box .sub_group .arrow_btn .prev {
+	left : 0;
+}
+#menu .menu_box .sub_group .arrow_btn .next {
+	right : 0;
+}
+#menu .menu_box .sub_group .sub {
+	display : none;
+	position : relative;
+	width : 400%;
+	left : 0;
+	background-color : #fff;
+	padding : 2em 0;
+}
+#menu .menu_box .sub_group .sub.active {
+	display : flex;
+}
+#menu .menu_box .sub_group .sub li {
+	width : 25%;
+	padding : 0 40px;
+	box-sizing : border-box;
+}
+#menu .menu_box .sub_group .sub li a {
+	display : flex;
+	justify-content : center;
+	align-items : center;
+}
+#menu .menu_box .sub_group .sub li a.column {
+	flex-direction : column;
+}
+#menu .menu_box .sub_group .sub li dl {
+	text-align : center;
+}
+#menu .menu_box .sub_group .sub li dl dt {
+	font-size : 1.1em;
+	font-weight : 700;
+	line-height : 2em;
+	color : #000;
+}
+#menu .menu_box .sub_group .sub li dl dd {
+	font-size : 0.8em;
+	font-weight : 500;
+}
+/* 배달 delivery */
+#delivery {
+	overflow : hidden;
+}
+#delivery .link {
+	padding : 2em 0;
+	background : url(../images/delivery_bg01.jpg) no-repeat center center;
+	background-size : cover;
+}
+
+#delivery .link a {
+	display : inline-block;
+	width : 15em;
+	border : 2px solid #ccc;
+	color : #000;
+	font-size : 0.9em;
+	font-weight : 400;
+	line-height : 3em;
+	background-color : #fff;
+}
+
+#footer {
+	background-color : #000;
+}
+
+#footer .f_head {
+	display : flex;
+	justify-content : space-between;
+	align-items : center;
+	padding : 1em 2em;
+	border-bottom : 1px solid #fff;
+}
+
+#footer .f_head .logo {
+	transform : scale(0.9);
+}
+
+#footer .f_head .sns {
+	display : flex;
+}
+
+#footer .f_head .sns.small {
+	transform : scale(0.9);
+}
+
+#footer .f_head .sns li {
+	margin-right : 20px;
+}
+
+#footer .f_head .sns li:last-child {
+	margin : 0;
+}
+
+#footer .f_cont {
+	padding : 1em 2em;
+}
+
+#footer .f_cont .family_site {
+	text-align : center;
+	position : relative;
+	width : 10em;
+	margin : 0 auto;
+}
+
+#footer .f_cont .family_site > a {
+	display : inline-block;
+	width : 100%;
+	line-height : 2em; 
+	color : #fff;
+	font-size : 1em;
+	font-weight : 700;
+}
+
+#footer .f_cont .family_site > a::after {
+	content : '';
+	display : inline-block;
+	margin-left : 10px;
+	width : 8px;
+	height : 5px;
+	background : url(../images/icon_arr_01.png) no-repeat;
+	vertical-align : middle;
+}
+
+#footer .f_cont .family_site > a.active::after {
+	transform : rotate(180deg);
+}
+
+#footer .f_cont .family_site ul {
+	display : none;
+	position : absolute;
+	left : 5%;
+	width : 90%;
+	top : 100%;
+	overflow : hidden;
+	background-color : #fff;
+}
+
+#footer .f_cont .family_site ul a {
+	display : inline-block;
+	width : 100%;
+	font-weight : 700;
+	font-size : 0.9em;
+	line-height : 2.2em;
+}
+
+#footer .f_cont .franchise {
+	margin-top : 2em;
+	color : #fff;
+}
+
+#footer .f_cont .franchise dt {
+	font-size : 1.1em;
+	font-weight : 500;
+	margin-bottom : 10px;
+}
+
+#footer .f_cont .franchise dd ul {
+	display : flex;
+	flex-wrap : wrap;
+	color : #ccc;
+	font-weight : 300;
+	font-size : 0.9em;
+	letter-spacing : 0.5px;
+}
+
+#footer .f_cont .franchise dd ul li {
+	position : relative;
+	margin-right : 30px;
+}
+
+#footer .f_cont .franchise dd ul li a {
+	color : #ccc;
+}
+
+#footer .f_cont .franchise dd ul li:last-child {
+	margin : 0;
+}
+
+#footer .f_cont .franchise dd ul li::after {
+	content : '';
+	display : block;
+	position : absolute;
+	width : 1px;
+	height : 0.6em;
+	right : -15px;
+	top : 0.5em;
+	background-color : #666;
+}
+
+#footer .f_cont .franchise dd ul li:last-child::after {
+	display : none;
+}
+
+#footer .f_cont .footer_menu {
+	margin-top : 2em;
+	display : flex;
+	flex-wrap : wrap;
+}
+
+#footer .f_cont .footer_menu li {
+	margin-right : 20px;
+}
+
+#footer .f_cont .footer_menu li:last-child {
+	margin : 0;
+}
+
+#footer .f_cont .footer_menu a {
+	color : #fff;
+	font-weight : 300;
+	font-size : 0.9em;
+}
+
+#footer .f_cont > span {
+	color : #ccc;
+	font-size : 0.6em;
+	font-weight : 300;
+}
