@@ -13,12 +13,6 @@ body, p, h1, h2, h3, h4, h5, h6, ul, ol {
 ul, ol {
 	list-style-type: none;
 }
-<<<<<<< HEAD
-=======
-div {
-	box-sizing: border-box;
-}
->>>>>>> 94e10f466eb04ac72d5ac7047848737bb6fa712f
 img {
 	vertical-align: top;
 	border: none;
