@@ -53,45 +53,55 @@
 		<ul class="gnb">
 			<li>
 				<a href="">포메인</a>
-				<ul class="depth">
-					<li><a href="">브랜드 소개</a></li>
-					<li><a href="">CEO 인사말</a></li>
-					<li><a href="">연혁</a></li>
-					<li><a href="">오시는 길</a></li>
-				</ul>
+				<div class="depth">
+					<ul class="depth_inner">
+						<li><a href="">브랜드 소개</a></li>
+						<li><a href="">CEO 인사말</a></li>
+						<li><a href="">연혁</a></li>
+						<li><a href="">오시는 길</a></li>
+					</ul>
+				</div>
 			</li>
 			<li>
 				<a href="">메뉴</a>
-				<ul class="depth">
-					<li><a href="">쌀국수</a></li>
-					<li><a href="">월남쌈</a></li>
-					<li><a href="">볶음국수</a></li>
-					<li><a href="">볶음밥</a></li>
-					<li><a href="">에피타이저</a></li>
-					<li><a href="">스페셜 메뉴</a></li>
-				</ul>
+				<div class="depth">
+					<ul class="depth_inner">
+						<li><a href="">쌀국수</a></li>
+						<li><a href="">월남쌈</a></li>
+						<li><a href="">볶음국수</a></li>
+						<li><a href="">볶음밥</a></li>
+						<li><a href="">에피타이저</a></li>
+						<li><a href="">스페셜 메뉴</a></li>
+					</ul>
+				</div>
 			</li>
 			<li>
 				<a href="">매장</a>
-				<ul class="depth">
-					<li><a href="">프렌차이즈 매장</a></li>
-					<li><a href="">가맹 정보</a></li>
-					<li><a href="">가맹 문의</a></li>
-				</ul>
+				<div class="depth">	
+					<ul class="depth_inner">
+						<li><a href="">프렌차이즈 매장</a></li>
+						<li><a href="">가맹 정보</a></li>
+						<li><a href="">가맹 문의</a></li>
+					</ul>
+				</div>
 			</li>
 			<li>
 				<a href="">새소식</a>
-				<ul class="depth">
-					<li><a href="">공지사항</a></li>
-					<li><a href="">이벤트</a></li>
-				</ul>
+				<div class="depth">
+					<ul class="depth_inner">
+						<li><a href="">공지사항</a></li>
+						<li><a href="">이벤트</a></li>
+					</ul>
+				</div>
 			</li>
 			<li>
-				<a href="">고객센터</a>
-				<ul class="depth">
-					<li><a href="">1:1 문의</a></li>
-					<li><a href="">마일리지</a></li>
-				</ul>
+				<a href="">고객센터</a>				
+				<div class="depth">
+					<ul class="depth_inner">
+						<li><a href="">1:1 문의</a></li>
+						<li><a href="">마일리지</a></li>
+					</ul>
+				</div>
 			</li>
 		</ul>
 	</div>
@@ -120,35 +130,37 @@
 		</div>
 		<ul class="conts">
 			<li>
-				<div class="b_image">
-					<img src="images/brand_cont1_image1.jpg" alt="브랜드_명품">
-				</div>
-				<dl>
-					<dt>名品</dt>
-					<dd>대한민국 대표 '명품' 쌀국수</dd>
-				</dl>
-				<a href="">자세히 보기</a>
+				<a href="">
+					<div class="b_image">
+						<img src="images/brand_cont1_image1.jpg" alt="브랜드_명품">
+					</div>
+					<dl>
+						<dt>名品</dt>
+						<dd>대한민국 대표 '명품' 쌀국수</dd>
+					</dl>
+				</a>
 			</li>
 			<li>
-				<div class="b_image">
-					<img src="images/brand_cont2_image1.jpg" alt="포시즌">
-				</div>
-				<dl>
-					<dt>PHO SEASON</dt>
-					<dd>포메인만의 '특별함'</dd>
-				</dl>
-				<a href="">자세히 보기</a>
+				<a href="">
+					<div class="b_image">
+						<img src="images/brand_cont2_image1.jpg" alt="포시즌">
+					</div>
+					<dl>
+						<dt>PHO SEASON</dt>
+						<dd>포메인만의 '특별함'</dd>
+					</dl>
+				</a>
 			</li>
 			<li>
-				<div class="b_image">
-					<img src="images/brand_cont3_image1.jpg" alt="PROMISE">
-				</div>
-				<dl>
-					<dt>PROMISE</dt>
-					<dd>안전한 식재료<br>
-					정직한 먹거리</dd>
-				</dl>
-				<a href="">자세히 보기</a>
+				<a href="">
+					<div class="b_image">
+						<img src="images/brand_cont3_image1.jpg" alt="PROMISE">
+					</div>
+					<dl>
+						<dt>PROMISE</dt>
+						<dd>안전한 식재료, 정직한 먹거리</dd>
+					</dl>
+				</a>
 			</li>
 		</ul>
 	</div>
@@ -160,21 +172,16 @@
 			</dl>
 		</div>
 		<div class="menu_box">
-			<p class="select">원하시는 메뉴를 선택해주세요.</p>
 			<div class="menu_scroll">
 				<span>checked</span>
 			</div>
-			<ul>
+			<ul class="food_type">
 				<li><a href="">쌀국수</a></li>
 				<li><a href="">볶음국수</a></li>
 				<li><a href="">볶음밥</a></li>
 				<li><a href="">스페셜</a></li>
 			</ul>
 			<div class="sub_group">
-				<div class="arrow_btn">
-					<a href="" class="prev"><img src="images/prev.png" alt="prev"></a>
-					<a href="" class="next"><img src="images/next.png" alt="next"></a>
-				</div>
 				<ul class="sub">
 					<li>
 						<a href="">
@@ -338,9 +345,9 @@
 				<dd>집에서도 포메인의 메뉴를 마음껏 즐겨보세요!</dd>
 			</dl>
 		</div>
-		<div class="link">
-			<a href="">포메인 배달 이용하기</a>
-		</div>
+		<a href="" class="link">
+			<img src="images/delivery_bg01.jpg" alt="delivery">
+		</a>
 	</div>
 	<footer id="footer">
 		<div class="f_head">

@@ -31,24 +31,12 @@
 			var sns;
 			
 			if($(window).width()<550){
-				// 음식 설명 상하 정렬
-				$(".sub a").addClass("column");
-				
-				// 메뉴 좌우 버튼 제거
-				$(".arrow_btn").addClass("off")
-
-				// sns 아이콘 이미지축소	
+			// sns 아이콘 이미지축소	
 				$(".sns").addClass("small");
 				$(".menu_scroll").addClass("resize");
 			}
 			else{
-				// 음식 설명 좌우 정렬
-				$(".sub a").removeClass("column");
-				
-				// 메뉴 좌우 버튼 생성
-				$(".arrow_btn").removeClass("on")
-
-				//sns 아이콘 이미지 확대			
+			//sns 아이콘 이미지 확대			
 				$(".sns").removeClass("small");
 				$(".menu_scroll").removeClass("resize");
 			}
@@ -98,6 +86,7 @@
 	$(".close").click(function(e){
 		e.preventDefault();
 		$(".mobile").removeClass("active");
+		$(".gnb > li > a").removeClass("active");
 		$(".dim").removeClass("active");
 		$(".depth").slideUp();
 		$("body").removeClass("fixed");
@@ -105,9 +94,9 @@
 	// 메뉴 밖 검은 화면
 	$(".dim").click(function(){
 		$(".mobile").removeClass("active");
+		$(".gnb > li > a").removeClass("active");
 		$(this).removeClass("active");
 		$(".depth").slideUp();
-		$(".add_btn").removeClass("active");
 		$("body").removeClass("fixed");
 	});
 	
@@ -163,69 +152,32 @@
 	});
 
 // menu --------------------------------------------------------------------
-//	$(".menu_box > ul > li").eq(0).addClass("active");
-//	$(".sub_group > ul").eq(0).addClass("active");
-//	$(".prev").hide();	
+	$(".food_type li").eq(0).addClass("active");
 	
 	// menu 카테고리 선택
 	var menuN;
 	
-	$(".menu_box > ul > li").click(function(e){
+	$(".food_type li").click(function(e){
 		e.preventDefault();
 		menuN=$(this).index();
 		move=menuN*25;
 		
-		$(".menu_box > ul > li").removeClass("active");
+		$(".food_type li").removeClass("active");
 		$(this).addClass("active");
-		$(".sub_group .sub").removeClass("active")
-		$(".sub_group .sub").eq(menuN).addClass("active")
-		$(".menu_scroll span").show();
 		$(".menu_scroll span").css({left:move+"%"});
-		$(".select").fadeOut(400);
-
-		// 세부메뉴 초기화
-		$(".sub_group .sub").css({left:0});
-		
-		// 첫 메뉴 선택시
-		if($(".sub_group").is(":visible")!=true){
-			$(".sub_group").slideDown(500);
-		}
-	});
-
-	// 좌우버튼 클릭시	
-	$(".prev").click(function(e){
-		e.preventDefault();
-		// 동작중 실행 금지
-		if($(".sub.active").is(":animated"))return false
-		
-		$(".sub.active").prepend($(".sub.active").children().eq(3));
-		$(".sub.active").css({left:"-100%"});
-		$(".sub.active").animate({left:'0%'},500);
-
-	});
-	$(".next").click(function(e){
-		e.preventDefault();
-		// 동작중 실행 금지
-		if($(".sub.active").is(":animated"))return false
-		
-		$(".sub.active").animate({left:'-100%'},500,function(){
-			$(this).append($(this).children().eq(0));
-			$(this).css({left:0});
-		});
+		$(".sub_group").css({left:-move*4+"%"});
 	});
 	
 	// 포메인메뉴 스크롤 이벤트
-	var nonpix=0;
-	$(".sub_group .sub").each(function(){ // 모든 그룹마다 설정됩니다.
+	// var nonpix=0;
+	// $(".sub").each(function(){ // 모든 그룹마다 설정됩니다.		
+		// $(this).on("touchstart", function(e){
+			// evt=e.originalEvent;
+			// prevX=evt.touches[0].screenX;
+			// res=$(".sub.active").css("left");
 			
-		$(this).on("touchstart", function(e){
-			evt=e.originalEvent;
-			prevX=evt.touches[0].screenX;
-			res=$(".sub.active").css("left");
-			
-			// 'left 값'에서 'px' 뺀 값;
-			nonpix=parseInt($(".sub.active").css("left"));
-		});
+			// nonpix=parseInt($(".sub.active").css("left"));
+		// });
 
 // 스크롤 동작
 /*		 $(this).on("touchmove", function(e){
@@ -236,21 +188,21 @@
 			 $(".sub.active").css({left:nonpix+amount});
 		 });
 */
-		$(this).on("touchend", function(e){
-			evt=e.originalEvent;
-			nextX=evt.changedTouches[0].screenX;
+		// $(this).on("touchend", function(e){
+			// evt=e.originalEvent;
+			// nextX=evt.changedTouches[0].screenX;
 			
-			if(prevX-nextX>$(this).children().width()/5){ // 우측으로 슬라이드
-				$(".next").trigger("click");
-			}
-			else if(nextX-prevX>$(this).children().width()/5){ // 좌측으로 슬라이드
-				$(".prev").trigger("click");
-			}
-			else{
-				return false;
-			}
-		});
-	});
+			// if(prevX-nextX>$(this).children().width()/5){ // 우측으로 슬라이드
+				// $(".next").trigger("click");
+			// }
+			// else if(nextX-prevX>$(this).children().width()/5){ // 좌측으로 슬라이드
+				// $(".prev").trigger("click");
+			// }
+			// else{
+				// return false;
+			// }
+		// });
+	// });
 
 // footer 
 	// family site
