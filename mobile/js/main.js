@@ -1,4 +1,4 @@
-	$(function(){
+window.addEventListener("load", function(){
 // keyvisual ----------------------------------------------------------
 // 화면 비율 조정
 
@@ -114,22 +114,38 @@
 		}
 	});
 
-// keyvisual 드래그 슬라이드 -----------------------------------------------
+/* keyvisual 메인 배너 */
 	// 초기 설정
 	var keyIndex=0;
 	// 슬라이드 개수
+	var mainBanner=document.querySelector(".mainBanner ul");
 	var keyTotal=$("#keyvisual ul li").length;
+	// controller 컨트롤러
+	var keyControl=document.querySelectorAll(".controller a");
+	keyControl[0].classList.add("on");
 	
+	for(i=0; i<keyControl.length; i++){
+		keyControl[i].index=i;
+		keyControl[i].addEventListener("click", function(e){
+			e.preventDefault();
+			for(j=0; j<keyControl.length; j++){
+				keyControl[j].classList.remove("on");
+			}
+			this.classList.add("on");
+			keyIndex=this.index;
+			mainBanner.style.left=keyIndex*-100+"%"
+		});
+	}
+	
+	// keyvisual 드래그 슬라이드
 	//터치 시작
 	$("#keyvisual ul").on("touchstart", function(e){
 		var evt=e.originalEvent;
 		prevX=evt.touches[0].screenX;
 	//	console.log(prevX);
-		
 	});
-	
 	//터치 끝
-	$("#keyvisual ul").on("touchend", function(e){
+	$(".mainBanner ul").on("touchend", function(e){
 		var evt=e.originalEvent;
 		nextX=evt.changedTouches[0].screenX;
 	//	console.log(nextX);
@@ -150,7 +166,6 @@
 			return false;
 		}
 	});
-
 // menu --------------------------------------------------------------------
 	$(".food_type li").eq(0).addClass("active");
 	
