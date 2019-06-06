@@ -488,11 +488,19 @@ body.fixed {
 	overflow : hidden;
 }
 #delivery .link {
-	display: block;
-	width: 100%;
+	display: flex;
+	justify-content: space-between;
 }
-#delivery .link img {
+#delivery .link a {
+	display: block;
+	width: 48%;
+}
+#delivery .link a img {
 	max-width: 100%;
+}
+#delivery .link a span {
+	color: #555;
+	font-size: 1.25em;
 }
 /* footer 푸터 */
 #footer {
