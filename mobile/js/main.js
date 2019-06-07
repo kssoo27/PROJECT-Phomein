@@ -1,50 +1,14 @@
 window.addEventListener("load", function(){
-// keyvisual ----------------------------------------------------------
-// 화면 비율 조정
-
+/* 화면 비율 조정 */
 	var windowHeight;
 	var windowWidth;
-	var timer;
-	var mainW;
-	
 	$(window).resize(function(){
-	//	clearTimeout(timer);
-	//	timer=setTimeout(function(){
-			windowHeight=$(window).height();
-			windowWidth=$(window).width();
-			if(windowHeight>windowWidth){
-			}
-			else{
-			}
-			mainW=$(".mainBanner img").width();
-			
-			if(mainW<windowWidth){
-				mainW=windowWidth;
-			}
-			else{
-				mainW=960;
-			}
-			$("img.main").width(mainW);
-			$("img.main").css({"margin-left":-mainW/2});
-			
-		// 포메인 메뉴 기본설정  + footer sns 이미지
-			var sns;
-			
-			if($(window).width()<550){
-			// sns 아이콘 이미지축소	
-				$(".sns").addClass("small");
-				$(".menu_scroll").addClass("resize");
-			}
-			else{
-			//sns 아이콘 이미지 확대			
-				$(".sns").removeClass("small");
-				$(".menu_scroll").removeClass("resize");
-			}
-	//	},50)
+		windowHeight=$(window).height();
+		windowWidth=$(window).width();
 	}).trigger("resize");
 
-	//스크롤 이벤트 -----------------------------------------------------
-	$(window).scroll(function(){
+/*스크롤 이벤트 */
+/*	$(window).scroll(function(){
 		scT=$(window).scrollTop();
 		
 		// Brand Story 스크롤 이벤트
@@ -58,9 +22,9 @@ window.addEventListener("load", function(){
 			}
 		});
 	}).trigger("scroll");
-
-// Mobile --------------------------------------------------------------
-	// 메뉴 텝 클릭시 ----------------------------------
+*/
+/* Mobile */
+// 메뉴 텝 클릭시 ----------------------------------
 	$(".tab").click(function(e){
 		e.preventDefault();
 		$(".mobile").addClass("active");
@@ -82,7 +46,7 @@ window.addEventListener("load", function(){
 		}
 	});
 	
-	// 닫기버튼
+// 닫기버튼
 	$(".close").click(function(e){
 		e.preventDefault();
 		$(".mobile").removeClass("active");
@@ -91,7 +55,7 @@ window.addEventListener("load", function(){
 		$(".depth").slideUp();
 		$("body").removeClass("fixed");
 	});
-	// 메뉴 밖 검은 화면
+// 메뉴 밖 검은 화면
 	$(".dim").click(function(){
 		$(".mobile").removeClass("active");
 		$(".gnb > li > a").removeClass("active");
@@ -100,7 +64,7 @@ window.addEventListener("load", function(){
 		$("body").removeClass("fixed");
 	});
 	
-	// 검색기능
+// 검색기능
 	$(".search > a").click(function(e){
 		e.preventDefault();
 		if($(".search_box").is(":visible")){
@@ -115,13 +79,22 @@ window.addEventListener("load", function(){
 	});
 
 /* keyvisual 메인 배너 */
-	// 초기 설정
+// 초기 설정
 	var keyIndex=0;
-	// 슬라이드 개수
 	var mainBanner=document.querySelector(".mainBanner ul");
-	var keyTotal=$("#keyvisual ul li").length;
+	var mainBannerList=document.querySelectorAll(".mainBanner ul li");
+// 슬라이드 개수
+	var keyTotal=mainBannerList.length;
+	for(i=0; i<keyTotal; i++){
+		mainBannerList[i].style.width=100/(keyTotal+1)+"%";
+	}
+	mainBanner.style.width=(keyTotal+1)*100+"%";
+	var mainBannerFirst=mainBannerList[0].cloneNode(true);
+	var mainBannerLast=mainBanner.lastElementChild.cloneNode(true);
+	
 	// controller 컨트롤러
 	var keyControl=document.querySelectorAll(".controller a");
+	
 	keyControl[0].classList.add("on");
 	
 	for(i=0; i<keyControl.length; i++){
@@ -133,19 +106,84 @@ window.addEventListener("load", function(){
 			}
 			this.classList.add("on");
 			keyIndex=this.index;
-			mainBanner.style.left=keyIndex*-100+"%"
+			mainBanner.style.left=keyIndex*-100+"%";
 		});
 	}
 	
 	// keyvisual 드래그 슬라이드
+	var bannerAmount=null;
 	//터치 시작
-	$("#keyvisual ul").on("touchstart", function(e){
+/*	$(".mainBanner ul").on("touchstart", function(e){
 		var evt=e.originalEvent;
 		prevX=evt.touches[0].screenX;
 	//	console.log(prevX);
+	});*/
+	mainBanner.addEventListener("touchstart", function(e){
+		prevX=event.touches[0].screenX;
+		mainBanner.classList.add("transNone");
+		// console.log(prevX);
 	});
+	// 터치 움직임
+	mainBanner.addEventListener("touchmove", function(e){
+		moveX=event.touches[0].screenX;
+		bannerAmount=moveX-prevX;
+		if(keyIndex==keyTotal-1){
+			mainBanner.appendChild(mainBannerFirst);
+		}
+		else if(keyIndex==0){
+			mainBanner.insertBefore(mainBannerLast, mainBannerList[0]);
+			mainBanner.style.left=-100+"%";
+		}
+		mainBanner.style.transform="translateX("+bannerAmount+"px)";
+	});
+/*	$(".mainBanner ul").on("touchmove", function(e){
+		evt=e.originalEvent;
+		moveX=evt.touches[0].screenX;
+		amount=moveX-prevX;
+		if(menuIndex==menuTotal-1 && amount<0){
+			
+		}
+		else if(menuIndex==0 && amount > 0){
+			
+		}
+		$(".sub_group").css({left:nonpix+amount});
+	});*/
+	
 	//터치 끝
-	$(".mainBanner ul").on("touchend", function(e){
+	mainBanner.addEventListener("touchend", function(e){
+		nextX=event.changedTouches[0].screenX;
+		// console.log(nextX);
+		if(prevX-nextX> 100){ // 우측으로 슬라이드
+			keyIndex++;
+		}
+		else if(nextX-prevX>100){ // 좌측으로 슬라이드
+			if(keyIndex==0){
+				
+			}
+			keyIndex--;
+		}
+		mainBanner.style.left=bannerAmount+"px";
+		mainBanner.style.transform="translateX(0)";
+		mainBanner.classList.remove("transNone");
+		mainBanner.style.left=keyIndex*-100+"%";
+		this.addEventListener("transitionend", function(){
+			if(keyIndex==keyTotal){
+				mainBanner.classList.add("transNone");
+				mainBanner.style.left=0;
+				mainBanner.classList.remove("transNone");
+				mainBanner.removeChild(mainBanner.lastElementChild);
+				keyIndex=0;
+			}
+			else if(keyIndex==0){
+
+				// mainBanner.classList.remove("transNone");
+				// mainBanner.removeChild(mainBanner.firstElementChild);
+				// keyIndex=0;
+			}
+		});
+	});
+	
+/*	$(".mainBanner ul").on("touchend", function(e){
 		var evt=e.originalEvent;
 		nextX=evt.changedTouches[0].screenX;
 	//	console.log(nextX);
@@ -165,59 +203,112 @@ window.addEventListener("load", function(){
 		else{
 			return false;
 		}
-	});
+	});*/
+
+/*	$(this).on("touchend", function(e){
+		evt=e.originalEvent;
+		nextX=evt.changedTouches[0].screenX;
+		
+		if(prevX-nextX>$(this).width()/2){ // 우측으로 슬라이드
+			if(menuIndex==menuTotal-1){
+				return false;
+			}
+			else{
+				menuIndex++;
+			}
+		}
+		else if(nextX-prevX>$(this).width()/2){ // 좌측으로 슬라이드
+			if(menuIndex==0){
+				return false;
+			}
+			else{
+				menuIndex--;
+			}
+		}
+		$(".food_type li").eq(menuIndex).trigger("click");
+	});*/
 // menu --------------------------------------------------------------------
 	$(".food_type li").eq(0).addClass("active");
 	
 	// menu 카테고리 선택
-	var menuN;
-	
+	var menuIndex=0;
+	var menuTotal=$(".food_type li").length;
+	var menuWidth=$(".sub").width();
+	var	menuDistance=null;
+	var menuAmount;
+
 	$(".food_type li").click(function(e){
 		e.preventDefault();
-		menuN=$(this).index();
-		move=menuN*25;
+		
+		$(".sub_group").css({transform:"translateX(0)"});
+		$(".sub_group").css({left:menuDistance+menuAmount});
+		menuAmount=0;
+		
+		menuIndex=$(this).index();
+		menuDistance=menuIndex*-menuWidth;
 		
 		$(".food_type li").removeClass("active");
 		$(this).addClass("active");
-		$(".menu_scroll span").css({left:move+"%"});
-		$(".sub_group").css({left:-move*4+"%"});
-	});
+		$(".menu_scroll span").css({left:menuIndex*25+"%"});
+		$(".sub_group").animate({left:menuDistance},500);
+	});	
 	
-	// 포메인메뉴 스크롤 이벤트
-	// var nonpix=0;
-	// $(".sub").each(function(){ // 모든 그룹마다 설정됩니다.		
-		// $(this).on("touchstart", function(e){
-			// evt=e.originalEvent;
-			// prevX=evt.touches[0].screenX;
-			// res=$(".sub.active").css("left");
-			
-			// nonpix=parseInt($(".sub.active").css("left"));
-		// });
+	//포메인메뉴 스크롤 이벤트
+	var nonpix=null; // px 제거
+	
+	$(".sub").each(function(){ // 모든 그룹마다 설정됩니다.
+		$(this).on("touchstart", function(e){
+			evt=e.originalEvent;
+			prevX=evt.touches[0].screenX;
+			res=$(".sub_group").css("left");
+			// nonpix=parseInt($(".sub_group").css("left"));
+			$("body").addClass("fixed");
+		});
 
-// 스크롤 동작
-/*		 $(this).on("touchmove", function(e){
-			 evt=e.originalEvent;
-			 moveX=evt.touches[0].screenX;
-			 amount=moveX-prevX;
-
-			 $(".sub.active").css({left:nonpix+amount});
+	//스크롤 동작
+		 $(this).on("touchmove", function(e){
+			if($(".sub_group").is(":animated")==true){
+				return false;
+			}
+			evt=e.originalEvent;
+			moveX=evt.touches[0].screenX;
+			amount=moveX-prevX;
+			if(menuIndex==menuTotal-1 && menuAmount<0){
+				return false;
+			}
+			else if(menuIndex==0 && menuAmount > 0){
+				return false;
+			}
+			$(".sub_group").css({transform:"translateX("+menuAmount+"px)"});
 		 });
-*/
-		// $(this).on("touchend", function(e){
-			// evt=e.originalEvent;
-			// nextX=evt.changedTouches[0].screenX;
+
+		$(this).on("touchend", function(e){
+			if($(".sub_group").is(":animated")==true){
+				return false;
+			}
+			evt=e.originalEvent;
+			nextX=evt.changedTouches[0].screenX;
 			
-			// if(prevX-nextX>$(this).children().width()/5){ // 우측으로 슬라이드
-				// $(".next").trigger("click");
-			// }
-			// else if(nextX-prevX>$(this).children().width()/5){ // 좌측으로 슬라이드
-				// $(".prev").trigger("click");
-			// }
-			// else{
-				// return false;
-			// }
-		// });
-	// });
+			if(prevX-nextX>$(this).width()/4){ // 우측으로 슬라이드
+				if(menuIndex==menuTotal-1){
+					return false;
+				}
+				else{
+					menuIndex++;
+				}
+			}
+			else if(nextX-prevX>$(this).width()/4){ // 좌측으로 슬라이드
+				if(menuIndex==0){
+					return false;
+				}
+				else{
+					menuIndex--;
+				}
+			}
+			$(".food_type li").eq(menuIndex).trigger("click");
+			$("body").removeClass("fixed");
+		});
+	});
 
 // footer 
 	// family site
