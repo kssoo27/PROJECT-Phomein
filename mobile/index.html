@@ -15,6 +15,7 @@
 
 <body>
 <div class="wrap">
+	<div class="header_op dim"></div>
 	<header id="header">
 		<div class="logo">
 			<h1 id="logo">
@@ -32,17 +33,28 @@
 						<input type="text" placeholder="검색어를 입력해주세요.">
 						<button></button>
 					</form>
-					<span>추천 검색어 : <a href="">쌀국수</a>, <a href="">세트메뉴</a>, <a href="">마일리지</a></span>
+					<div class="suggest">
+						<span>추천 검색어</span>
+						<ul class="suggest_wordList">
+							<li><a href="">포메인 쌀국수</a></li>
+							<li><a href="">소고기 볶음밥</a></li>
+							<li><a href="">이벤트</a></li>
+							<li><a href="">마일리지</a></li>
+							<li><a href="">소스</a></li>
+						</ul>
+					</div>
+					<a href="" class="search_close"><img src="images/search_scroll_icon.png" alt="close"></a>
 				</div>
 			</div>
 		</div>
 	</header>
+	<div class="mobile_op dim"></div>
 	<div class="mobile">
 		<div class="mobile_head">
 			<div class="mobile_logo">
 				<img src="images/logo.png" alt="logo">
 			</div>
-			<a href="" class="close"><img src="images/close_icon.png" alt="닫기"></a>
+			<a href="" class="menu_close"><img src="images/close_icon.png" alt="닫기"></a>
 		</div>
 		<div class="login">
 			<ul>
@@ -115,16 +127,14 @@
 					<a href=""><img src="images/main_image02.jpg" alt="Banner2"></a>
 				</li>
 				<li>
-					<a href="">3</a>
-				</li>
-				<li>
-					<a href="">4</a>
+					<a href=""><img src="images/main_image03.jpg" alt="Banner3"></a>
 				</li>
 			</ul>
 		</div>
 		<div class="controller">
 			<a href="">1</a>
 			<a href="">2</a>
+			<a href="">3</a>
 		</div>
 	</div>
 	<div id="brand" class="contents">
@@ -401,7 +411,6 @@
 			<span>ⓒ2017 DAILKING INC.ALL RIGHTS RESERVED</span>
 		</div>
 	</footer>
-	<div class="dim"></div>
 </div>
 </body>
 </html>

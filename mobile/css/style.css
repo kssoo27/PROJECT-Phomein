@@ -28,7 +28,7 @@ body.fixed {
 	background-color : #fff;
 }
 #header .logo {
-	z-index : 1;
+	z-index : 2;
 }
 #logo {
 	font-size : 1em;
@@ -51,6 +51,8 @@ body.fixed {
 	width : 100%;
 	padding: 0 5%;
 	box-sizing: border-box;
+	z-index : 1;
+	background-color: #fff;
 }
 #header .util img {
 	max-width: 100%;
@@ -64,35 +66,72 @@ body.fixed {
 	top : 100%;
 	right : 0;
 	width : 100%;
-	height : 60px;
 	padding-top: 20px; 
 	background-color : #fff;
+	border-top: 1px solid rgba(0,0,0,.4);
 	text-align : center;
-	z-index : 1;
 }
 #header .search .search_box input[type=text]{
 	width : 70%;
 	height : 30px;
-	border : 1px solid #ccc;
+	border : 1px solid #333;
 	box-sizing : border-box;
 	vertical-align : middle;
-	padding-left : 20px;
+	padding-left : 10px;
+	outline: none;
 }
 #header .search .search_box button {
 	width :	30px;
 	height : 30px;
 	vertical-align : middle;
-	border : 1px solid #ccc;
+	border : 1px solid #333;
 	background : url('../images/search_icon.png') no-repeat center center;
+	background-size: 50%;
 	background-color : #fff;
 }
-#header .search .search_box span {
-	font-size : 0.75em;
+#header .search .search_box .suggest {
+	padding: 20px;
+	text-align: left;
 	color : #666;
-	line-height : 20px;
+	line-height: 30px;
 }
-#header .search .search_box span a {
-	color: #555;
+#header .search .search_box .suggest span {
+	font-size: 16px;
+}
+#header .search .search_box .suggest .suggest_wordList {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 10px;
+}
+#header .search .search_box .suggest .suggest_wordList li {
+	display: inline-block;
+	padding-right: 50px;
+}
+#header .search .search_box .suggest .suggest_wordList a {
+	color: #333;
+	font-size: 14px;
+	font-weight: 300;
+}
+#header .search .search_box .search_close {
+	display: block;
+	background-color: #222;
+	padding: 2px 0;
+}
+.dim {
+	display : none;
+	position : fixed;
+	left : 0;
+	top : 0;
+	right : 0;
+	bottom : 0;
+	background-color : rgba(0,0,0,0.6);
+	overflow : hidden;
+}
+.header_op {
+	z-index: 1;
+}
+.mobile_op{
+	z-index: 3;
 }
 @media only screen and (max-width:760px){
 	#header {
@@ -101,7 +140,7 @@ body.fixed {
 	#logo a {
 		width: 100px;
 	}
-	#header .util .tab, #header .search > a {
+	#header .util .tab, #header .sea	rch > a {
 		width: 15px;
 	}
 }
@@ -121,6 +160,7 @@ body.fixed {
 }
 .mobile.active {
 	margin : 0;
+	box-shadow: 0 1px 2px rgba(0,0,0,.7);
 }
 .mobile_head {
 	display : flex;
@@ -184,8 +224,8 @@ body.fixed {
 .mobile > ul > li > a {
 	position: relative;
 	display : block;
-	line-height : 3.75em;
-	font-size : 1.125em;
+	line-height : 5em;
+	font-size : 1.25em;
 	color : #fff;
 	padding-left : 20px;
 }
@@ -221,20 +261,6 @@ body.fixed {
 	line-height : 3em;
 	color : #555;
 }
-.dim {
-	display : none;
-	position : fixed;
-	left : 0;
-	top : 0;
-	right : 0;
-	bottom : 0;
-	z-index : 10;
-	background-color : rgba(0,0,0,0.6);
-	overflow : hidden;
-}
-.dim.active {
-	display : block;
-}
 @media only screen and (max-width:760px){
 	.mobile .depth .depth_inner {
 		display: flex;
@@ -265,9 +291,8 @@ body.fixed {
 }
 #keyvisual .mainBanner ul {
 	display: flex;
-	position: relative;
-	left: 0;
-	transition: left 0.5s;
+	position: relative;	
+	transition: transform 0.3s;
 }
 #keyvisual .mainBanner ul.transNone {
 	transition: none;
@@ -287,8 +312,8 @@ body.fixed {
 }
 #keyvisual .controller a {
 	display : inline-block;
-	width : 8px;
-	height : 8px;
+	width : 0.5em;
+	height : 0.5em;
 	text-indent: -9999px;
 	border-radius: 50%;
 	border: 2px solid #fff;
@@ -298,7 +323,8 @@ body.fixed {
 	margin-left: 0;
 }
 #keyvisual .controller a.on {
-	background-color: #fff;
+	background-color: #358921;
+	border-color: #358921;
 }
 /* contents 컨텐츠 */
 .contents {
