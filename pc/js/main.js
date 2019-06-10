@@ -1,90 +1,66 @@
 $(function(){
 	/* header 기본설정 */
-	$("#gnb ul li").hover(function(){
-		$("header").addClass("active");
-		$(".depth").addClass("active");
-		$("nav ul li").removeClass("active");
-		$(this).addClass("active");
-	});
-	
 	$("header").mouseleave(function(){
 		$(this).removeClass("active");
 		$(".depth").removeClass("active");
 		$("nav ul li").removeClass("active");
-		depthN=6;
 	});
-
 /* 2depth ------------------------------------------------------------- */
+	var menuIndex;
 /* 메뉴 선택시 2depth 기본설정 */
-	var menuN;
-	var depthN;
 	$(".gnb li").mouseenter(function(){
-		menuN=$(this).index();
-		$(".depth_first > li").mouseenter(function(){
-			depthN=$(this).index();
-		});
-		if (menuN == depthN) return false;
-		$(".depth_second li").removeClass("active");
-		$(".depth_second li:first-child").addClass("active");
-		$(".depth_second li .exp").removeClass("active");
-		$(".depth_second li:first-child .exp").addClass("active");
-	});	
-
-	$(".gnb li").hover(function(){
-		n=$(this).index();
-		$(".depth_first > li").removeClass("active");
-		$(".depth_first > li").eq(n).addClass("active");
+		if($(this).hasClass("active")==true){
+			return false;
+		}
+		menuIndex=$(this).index();
+		$("header").addClass("active");
+		$(this).siblings().removeClass("active");
+		$(this).addClass("active");
+		$(".depth").show();
+		$(".depth_first > li").eq(menuIndex).siblings().hide();
+		$(".depth_first > li").eq(menuIndex).siblings().find(".exp").hide();
+		$(".depth_first > li").eq(menuIndex).show();
+		$(".depth_first > li").eq(menuIndex).find("li").eq(0).addClass("active");
+		$(".depth_first > li").eq(menuIndex).find("li").eq(0).find(".exp").show();
 	});
-
-/*-------------------------------------------*/
 /* 2depth */
 	$(".depth_second li").mouseenter(function(){
-		$(".exp").removeClass("active");
-		$(this).find(".exp").addClass("active");
-		$(".depth_second li").removeClass("active");
+		$(this).siblings().find(".exp").hide()	;
+		$(this).find(".exp").show();
+		$(this).siblings().removeClass("active");
 		$(this).addClass("active");
 	});
-	
-
-/*-----------------------------------------------------------*/
-/* depth event  */	
-	$(".event > ul li").hover(function(){
-		$(".event > ul li").removeClass("on");
+/* depth event */
+	$(".event > ul li").eq(0).addClass("on");
+	$(".event > ul li").mouseenter(function(){
+		var bannerIndex=$(this).index();
+		bannerPos=bannerIndex*(-1)*100;
+		$(this).siblings().removeClass("on");
 		$(this).addClass("on");
-		var n=0;
-		var pos;
-		n=$(this).index();
-		pos = n*(-1)*100;
-		$(".banner ul").css({"left":pos+"%"});
+		$(".banner ul").css({"left":bannerPos+"%"});
 	});
-
 /*--------------------------------------------------------------*/
 /* keyvisual */
 /* video */
 	var mainv=document.getElementById("mainv");
 	mainv.muted=true;
 	mainv.play();
-
 	var movie=new Array();
 	movie[0]="movie/roll_a.mp4";
 	movie[1]="movie/roll_b.mp4";
 	movie[2]="movie/roll_c.mp4";
 	var total=movie.length;
-	var n=0;
+	var moveNum=0;
 	
 	mainv.addEventListener("ended", function(){
-		// console.log("ended!");
-		if(n < (total-1)){
-			n=n+1;
+		if(moveNum < (total-1)){
+			moveNum++;
 		}else{
-			n=0;
+			moveNum=0;
 		}
-
-		// console.log("list : "+movie[n]);
-		$("#mainv").attr({src:movie[n]});
+		$("#mainv").attr({src:movie[moveNum]});
 		mainv.play();
 	});
-
 /* recommend_menu */
 	$(".icon").click(function(e){
 		e.preventDefault();
@@ -99,12 +75,8 @@ $(function(){
 		});
 		$(".dim").fadeOut(300);
 	});
-
-
 /*----------------------------------------------------*/
 /* brand story */
-	$("#brand_story").addClass("box1");
-
 	$(".brand_cont").hover(
 		function(){
 			$(this).addClass("on");
@@ -115,7 +87,6 @@ $(function(){
 			$(this).find(".more").stop().fadeOut(300);
 		}
 	);
-	
 /*-----------------------------------------------------*/
 /* Phomein's menu */
 	var foodScrollNum=0;	// 스크롤 index
@@ -147,10 +118,9 @@ $(function(){
 			}
 		});
 	});
-	// 음식 더보기
+// 음식 더보기
 	$(".foodMore").click(function(e){
-		e.preventDefault();
-		
+		e.preventDefault();	
 		foodListMin+=3;
 		foodListMax+=3;
 
@@ -176,12 +146,9 @@ $(function(){
 			});
 		});
 	});
-
+// 음식 갯수 줄이기
 	$(".foodReturn").click(function(e){
 		e.preventDefault();
-		
-		
-
 		$.getJSON("data/food.json", function(food){
 			$.each(food, function(foodType, foodGroup){
 				$(".food_type").each(function(){
@@ -197,7 +164,7 @@ $(function(){
 			$(".foodMore").show();
 		});
 	});
-	
+// 다이렉트 버튼
 	$(".control_direct a").click(function(e){
 		e.preventDefault();
 
@@ -223,16 +190,12 @@ $(function(){
 			});
 		});
 	});
-	
-/*--------------------------------------------------------*/
 /* quick_bar */	
 // 좌표 식 재 구성
 // document 높이 - 풋터의 높이 = 풋터의 시작좌표
 // scT + window 높이 + (-150) > 풋터의 시작좌표
 // 퀵 바 위치 = scT + window 높이 + (-150) + (-window 높이) + (+250)
-
-	$(window).scroll(function(){
-				
+	$(window).scroll(function(){			
 		var scT=0;
 		scT=$(window).scrollTop();
 		ver=scT+250;
@@ -263,10 +226,8 @@ $(function(){
 		}
 	});
 	$(window).trigger("scroll");
-/* ------------------------------------------------------- */	
 /* footer */	
-/* family site */
-
+// family Site
 	$(".f_site > a").click(function(e){
 		e.preventDefault();
 		if($(".f_site ul").is(":visible")!=true){

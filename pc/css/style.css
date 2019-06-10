@@ -27,17 +27,14 @@ body{
 	z-index : 99;
 	overflow : hidden;
 }
-
 #header:hover {
 	background-color : #fff;
 	border : none;
 }
-
 #header.active {
 	height : 450px;
 	border-bottom : 1px solid #ccc;
 }
-
 .head_inner {
 	position: relative;
 	width : 1120px;
@@ -45,40 +42,33 @@ body{
 	margin : 0 auto;
 	padding-top: 50px;
 }
-
 .head_inner .logo {
 	float : left;
 	height : 32px;
 	overflow : hidden;
 }
-
 #logo img {
 	position : relative;
 	width : 140px;
 }
-
 #header:hover h1 img {
 	top : -34px;
 }
-
 .head_inner .util {
 	position: absolute;
 	top: 20px;
 	right: 0;
 }
-
 .head_inner .util .user {
 	display : inline-block;
 	font-size : 0;
 	vertical-align : middle;
 }
-
 .head_inner .util .user li {
 	display : inline-block;
 	position : relative;
 	padding : 0 15px;
 }
-
 .head_inner .util .user li:first-child::after {
 	content : '';
 	display : block;
@@ -90,7 +80,6 @@ body{
 	background-color : #fff;
 	opacity : 0.7;
 }
-
 .head_inner .util .user li a {
 	color : #fff;
 	opacity : 0.8;
@@ -98,7 +87,6 @@ body{
 	line-height : 16px;
 	transition : 0.3s;
 }
-
 .head_inner .util > a {
 	display : inline-block;
 	color : #fff;
@@ -110,7 +98,6 @@ body{
 	box-sizing : border-box;
 	height : 20px;
 }
-
 /* util hover ----------------------------------------*/
 #header:hover .util a {
 	color : #333;
@@ -193,18 +180,12 @@ body{
 	display: none;
 	border-top : 1px solid #ccc;
 }
-
-.depth.active {
-	display : block;
-}
-
 .depth_inner {
 	position : relative;
 	width : 1120px;
 	margin : 0 auto;
 	padding-top : 40px;
 }
-
 .depth_inner::before,
 .depth_inner::after {
 	content:'';
@@ -215,21 +196,17 @@ body{
 	height : 340px;
 	background-color : #ccc;
 }
-
 .depth_inner::before {
 	left : calc(100%*5/16);
 }
-
 .depth_inner::after {
 	right : calc(100%*3/8);
 }
-
 .depth_inner > ul {
 	position : relative;
 	width : calc(100%*5/8);
 	float : left;
 }
-
 .depth_inner > ul > li {
 	display : none;
 	position : absolute;
@@ -238,40 +215,30 @@ body{
 	font-weight : 700;
 	color : #333;
 }
-
-.depth_inner > ul > li.active {
-	display : block;
-}
-
 .depth_inner .depth_second {
 	position : absolute;
 	width : 70%;
 	top : 0;
 	right : 0;
 }
-
 .depth_inner .depth_second li {
 	width : calc(100%*2/7);
 	font-size : 16px;
 	padding-bottom : 10px;
 }
-
 .depth_inner .depth_second li > a {
 	color : #555;
 	font-weight : 400;
 	line-height : 30px;
 }
-
 .depth_inner .depth_second li:hover > a {
 	color : #333;
 	font-weight : 700;
 }
-
 .depth_inner .depth_second li.active > a {
 	color : #333;
 	font-weight : 700;
 }
-
 .depth_inner .depth_second .exp {
 	display : none;
 	position : absolute;
@@ -280,82 +247,64 @@ body{
 	width : calc(100%*5/7);
 	padding : 0 calc(100%/7);
 	text-align : center;
-}	
-
-.depth_inner .depth_second .exp.active {
-	display : block;
 }
-
 .depth_inner .depth_second .exp dl {
 	margin-bottom : 20px;
 	text-align : left;
 }
-
 .depth_inner .depth_second .exp dt {
 	line-height : 30px;
 	padding-bottom : 10px;
 }
-
 .depth_inner .depth_second .exp dd {
 	font-weight : 300;
 	font-size : 12px;
 	line-height : 30px;
 }
-
 .depth_inner .depth_second .exp dd a {
 	color : #888;
 	transition : 0.3s;
 }
-
 .depth_inner .depth_second .exp dd a:hover,
 .depth_inner .depth_second .exp dd a:focus {
 	color : #333;
 	border-bottom : 1px solid #666;
 }
-
 .depth_inner .depth_second .exp img {
 	width : 210px;
 }
-
 .depth_inner .depth_second .exp > a {
 	padding : 10px 20px;
 	border : 1px solid #ccc;
 	color : #666;
 	transition : 0.3s;
 }
-
 .depth_inner .depth_second .exp > a:hover,
 .depth_inner .depth_second .exp > a:focus {
 	background-color : #333;
 	color : #fff;
 }
-
 .depth_inner .event {
 	width : calc(100%*3/8);
 	float : right;
 	padding-left : calc(100%/12);
 }
-
 .depth_inner .event .title {
 	height : 16px;
 	margin-bottom : 25px;
 }
-
 .depth_inner .event .title span {
 	font-weight : 700;
 	float :left;
 }
-
 .depth_inner .event .title a {
 	float : right;
 	font-size : 14px;
 	color : #333;
 }
-
 .depth_inner .event .title a:hover {
 	border-bottom : 1px solid #333;
 }
-
 .depth_inner .event .banner {
 	width : 190px;
 	height : 190px;
@@ -363,7 +312,6 @@ body{
 	overflow : hidden;
 	position : relative;
 }
-
 .depth_inner .event .banner ul {
 	position : absolute;
 	left : 0;
@@ -372,54 +320,41 @@ body{
 	height : 100%;
 	transition : 0.3s;
 }
-
 .depth_inner .event .banner .item {
 	position : relative;
 	width : calc(100%/3);
 	height : 100%;
 	float : left;
 }
-
 .depth_inner .event .banner .item img {
 	position : absolute;
 	left : 50%;
 	width : 100%;
 	margin-left : -95px;
 }
-
 .depth_inner .event > ul {
 	width : calc(40% - 10px);
 	height : 190px;
 	float : right;
 }
-
 .depth_inner .event > ul li {
 	height : 30%;
 	margin-bottom : 5%;
 }
-
 .depth_inner .event > ul li a {
 	color : #666;
 	font-size : 13px;
 	line-height : 24px;
 }
-
 .depth_inner .event ul li:hover a,
 .depth_inner .event ul li:focus a {
 	border-bottom : 1px solid #666;
 	font-weight : 500;
 }
-
 .depth_inner .event ul li.on a {
 	border-bottom : 1px solid #666;
 	font-weight : 500;
 }
-
-/* section */
-.section {
-	position : relative;
-}
-
 /* keyvisual ----------------------------------------*/
 /* 비디오 */
 .keyvisual {
@@ -453,13 +388,11 @@ body{
 	text-align : center;
 	color: #fff;
 }
-
 #phomein .main {
 	font-size : 60px;
 	font-weight : 500;
 	letter-spacing : 25px;
 }
-
 #phomein .sub {
 	margin-top : 60px;
 	font-size : 18px;
@@ -467,7 +400,6 @@ body{
 	line-height : 26px;
 	font-weight : 400;
 }
-
 /* 추천메뉴 */
 .keyvisual .recom_menu_zone {
 	position : absolute;
@@ -478,7 +410,6 @@ body{
 	height : 300px;
 	text-align : center;
 }
-
 .keyvisual .recom_menu_zone .icon {
 	position : relative;
 	top : 0px;
@@ -489,11 +420,9 @@ body{
 	animation-duration : 2s;
 	transition : 0.3s;
 }
-
 .keyvisual .recom_menu_zone .icon img {
 	width :	80px;
 }
-
 @keyframes icon {
 	0% {
 		top : 0px;
@@ -502,11 +431,9 @@ body{
 		top : 50px;
 	}
 }
-
 .keyvisual .icon:hover {
 	opacity : 1;
 }
-
 .keyvisual .recom_menu {
 	display : none;
 	position : relative;
@@ -516,13 +443,11 @@ body{
 	background-color : rgba(0,0,0,0.3);
 	z-index : 200;
 }
-
 .keyvisual .recom_menu .item {
 	width : calc(100%/3);
 	height : 130px;
 	float : left;
 }
-
 .keyvisual .recom_menu .item p {
 	color : #fff;
 	font-size : 16px;
@@ -531,12 +456,10 @@ body{
 	opacity : 0.6;
 	transition : 0.3s;
 }
-
 .keyvisual .recom_menu .item:hover p,
 .keyvisual .recom_menu .item:focus p {
 	opacity : 1;
 }
-
 .keyvisual .recom_menu .item img {
 	transform : scale(0.8);
 	transition : 0.3s;
@@ -555,46 +478,36 @@ body{
 	border: 2px solid #ccc;
 	border-radius: 5px;
 }
-
-/* -------------------------------------------------------------------*/
-/* 브랜드 스토리 */
-/* 배경 */
+/* 브랜드 스토리 brandstory */
 #brand_story {
 	width : 100%;
-/*	min-width : 1120px;*/
 	position : relative;
 	overflow : hidden;
 	background: url("../images/brand_bg.jpg") no-repeat 0 0;
 }
-
 #brand_story .brand_inner {
 	width : 1120px;
 	height : 1000px;
 	margin : 0 auto;
 	padding-top: 100px;
 }
-
 #brand_story .title {
 	text-align : center;
 	color: #fff;
 }
-
 #brand dl dt {
 	font-size : 60px;
 	font-weight : 500;
 	margin-bottom : 10px;
 }
-
 #brand dl dd {
 	font-size : 20px;
 	font-weight : 400;
 }
-
 #brand_story .brand_conts {
 	margin-top : 150px;
 	padding : 0 60px;
 }
-
 #brand_story .brand_conts .brand_cont {
 	position: relative;
 	width : 300px;
@@ -614,7 +527,6 @@ body{
 	bottom: 0;
 	background-color: #fff;
 }
-
 #brand_story .brand_conts .brand_cont dt {
 	font-size : 28px;
 	font-weight : 700;
@@ -637,27 +549,22 @@ body{
 	border-top : 4px solid #004517;
 	background : url('../images/brand_cont1_image1.jpg') no-repeat;
 }
-
 #brand_story .brand_conts .box1 dl {
 	color : #004517;
 }
-
 #brand_story .brand_conts .box2 {
 	margin-top : 50px;
 	border-top : 4px solid #e7371e;
 	background : url('../images/brand_cont2_image1.jpg') no-repeat;
 }
-
 #brand_story .brand_conts .box2 dl {
 	color : #e7371e;;
 }
-
 #brand_story .brand_conts .box3 {
 	margin-right : 0;
 	border-top : 4px solid #333;
 	background : url('../images/brand_cont3_image1.jpg') no-repeat;
 }
-
 #brand_story .brand_conts .box3 dl {
 	color : #333;	
 }
@@ -700,40 +607,33 @@ body{
 .cont_menu {
 	background-color : #fff;
 }
-
 .cont_menu .cont_menu_inner {
 	width : 1120px;
 	margin : 0 auto;
 	padding-top : 50px;
 }
-
 .cont_menu_inner .title {
 	margin-bottom : 50px;
 }
-
 #menu {
 	font-size : 50px;
 	font-weight : 500;
 }
-
 .menu_box {
 	position : relative;
 	text-align: center;
 }
-
 .menu_box .control_direct {
 	float: right;
 	font-size : 0;
 	margin-bottom: 20px;
 }
-
 .menu_box .control_direct li {
 	display : inline-block;
 	font-size : 14px;
 	padding : 0 20px;
 	position : relative;
 }
-
 .menu_box .control_direct li::after {
 	content :'';
 	display : block;
@@ -744,46 +644,21 @@ body{
 	height : 12px;
 	background-color : #ccc;
 }
-
 .menu_box .control_direct li:last-child::after {
 	display : none;
 }
-
 .menu_box .control_direct li a {
 	color : #888;
 	font-weight : 500;
 	transition : 0.3s;
 }
-
 .menu_box .control_direct li.on a {
 	color : #276928;
 }
-
 .menu_box .control_direct li a:hover,
 .menu_box .control_direct li a:focus {
 	color : #276928;
 }
-
-.menu_box .control_btns a {
-	position : absolute;
-	top : 50%;
-	margin-top: -32px;
-	opacity : 0.5;
-	transition : 0.3s;
-}
-
-.menu_box .control_btns a:hover {
-	opacity : 0.8
-}
-
-.menu_box .control_btns .left_btn {
-	left : 0;
-}
-
-.menu_box .control_btns .right_btn {
-	right : 0;
-}
-
 .food_box {
 	width: 100%;
 	position : relative;
