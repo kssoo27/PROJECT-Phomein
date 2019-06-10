@@ -99,24 +99,39 @@ window.addEventListener("load", function(){
 	
 	// keyvisual 드래그 슬라이드
 	var bannerAmount=null;
+	var bannerUpdownFlag=true;
 	//터치 시작
 	mainBanner.addEventListener("touchstart", function(e){
+		bannerUpdownFlag=true;
+		if(bannerUpdownFlag){
+			mainBanner.addEventListener("touchmove", bannerMove);
+		}
 		prevX=event.touches[0].screenX;
 		prevY=event.touches[0].screenY;
 	});
 	// 터치 움직임
-	mainBanner.addEventListener("touchmove", function(e){
+	mainBanner.addEventListener("touchmove", bannerMove=function(e){
 		moveX=event.touches[0].screenX;
 		moveY=event.touches[0].screenY;
-		bannerAmount=moveX-prevX;
-		
-		body.classList.add("fixed");
-		mainBanner.classList.add("transNone");
-		mainBanner.style.transform="translateX("+(keyIndex*-bannerWidth+bannerAmount)+"px)";
-
+		if(bannerUpdownFlag){
+			if(prevX!=moveX){ // 좌우 움직임
+				bannerUpdownFlag=false;
+			}
+			else{ // 상하 움직임
+				mainBanner.removeEventListener("touchmove", bannerMove);
+			}
+		}
+		else{
+			bannerAmount=moveX-prevX;
+			
+			body.classList.add("fixed");
+			mainBanner.classList.add("transNone");
+			mainBanner.style.transform="translateX("+(keyIndex*-bannerWidth+bannerAmount)+"px)";
+		}
 	});
 	//터치 끝
 	mainBanner.addEventListener("touchend", function(e){
+		if(bannerUpdownFlag) return false;
 		nextX=event.changedTouches[0].screenX;	
 		body.classList.remove("fixed");
 		// console.log(nextX);
@@ -175,26 +190,36 @@ window.addEventListener("load", function(){
 		$(".menu_scroll span").css({left:menuIndex*25+"%"});
 		$(".sub_group").animate({left:menuDistance},300);
 	});	
-	
 //포메인메뉴 스크롤 이벤트
 	var nonpix=null; // px 제거
-	
-	$(".sub").each(function(){ // 모든 그룹마다 설정됩니다.
-		$(this).on("touchstart", function(e){
-			evt=e.originalEvent;
-			prevX=evt.touches[0].screenX;
-		});
-	//스크롤 동작
-		 $(this).on("touchmove", function(e){
-			if($(".sub_group").is(":animated")==true){
-				return false;
+	var menuUpdownFlag=true;
+	// 터지 시작
+	$(".sub_group").on("touchstart", function(e){
+		menuUpdownFlag=true;
+		if(menuUpdownFlag){
+			$(this).on("touchmove", menuMove);
+		}
+		evt=e.originalEvent;
+		prevX=evt.touches[0].screenX;
+	});
+	// 스크롤 동작
+	 $(".sub_group").on("touchmove", menuMove=function(e){
+		if($(this).is(":animated")==true){
+			return false;
+		}
+		evt=e.originalEvent;
+		moveX=evt.touches[0].screenX;
+		if(menuUpdownFlag){
+			if(prevX!=moveX){ // 좌우 움직임
+				menuUpdownFlag=false;
 			}
-			evt=e.originalEvent;
-			moveX=evt.touches[0].screenX;
+			else{ // 상하 움직임
+				$(this).off("touchmove", menuMove);
+			}
+		}
+		else {
+			$("body").addClass("fixed");
 			menuAmount=moveX-prevX;
-			if(menuAmount!=0){
-				$("body").addClass("fixed");
-			}
 			if(menuIndex==menuTotal-1 && menuAmount<0){
 				return false;
 			}
@@ -202,36 +227,35 @@ window.addEventListener("load", function(){
 				return false;
 			}
 			$(".sub_group").css({transform:"translateX("+menuAmount+"px)"});
-		 });
-
-		$(this).on("touchend", function(e){
-			if($(".sub_group").is(":animated")==true){
+		}
+	 });
+	// 터치 끝
+	$(".sub_group").on("touchend", function(e){
+		if($(this).is(":animated")==true){
+			return false;
+		}
+		if(menuUpdownFlag) return false;
+		evt=e.originalEvent;
+		nextX=evt.changedTouches[0].screenX;
+		if(prevX-nextX> 100){ // 우측으로 슬라이드
+			if(menuIndex==menuTotal-1){
 				return false;
 			}
-			evt=e.originalEvent;
-			nextX=evt.changedTouches[0].screenX;
-			
-			if(prevX-nextX>$(this).width()/4){ // 우측으로 슬라이드
-				if(menuIndex==menuTotal-1){
-					return false;
-				}
-				else{
-					menuIndex++;
-				}
+			else{
+				menuIndex++;
 			}
-			else if(nextX-prevX>$(this).width()/4){ // 좌측으로 슬라이드
-				if(menuIndex==0){
-					return false;
-				}
-				else{
-					menuIndex--;
-				}
+		}
+		else if(nextX-prevX> 100){ // 좌측으로 슬라이드
+			if(menuIndex==0){
+				return false;
 			}
-			$(".food_type li").eq(menuIndex).trigger("click");
-			$("body").removeClass("fixed");	
-		});
+			else{
+				menuIndex--;
+			}
+		}
+		$(".food_type li").eq(menuIndex).trigger("click");
+		$("body").removeClass("fixed");	
 	});
-
 /* footer */
 // family site
 	$(".family_site > a").click(function(e){
